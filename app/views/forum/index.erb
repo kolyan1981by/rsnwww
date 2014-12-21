@@ -1,0 +1,31 @@
+<ul>
+	<% for @item in Forums %>
+	<li><a href="/forum/<%= @item.fid %>"><%= @item.name %></a></li>
+	<% end %>
+</ul>
+
+<table class="forumTable">
+	<tbody>
+		<tr>
+			<th class="icon_cell"></th>
+			<th>Тема</th>
+			<th>Автор</th>
+			<th style="width:5%">Ответов</th>
+			
+			<th style="width:15%">Дата</th>
+		</tr>
+		<% for @item in @topics %>
+		<tr>
+			<td class="icon_cell"><img src="/images/message.gif" alt=""></td>
+			<td class="postslisttopic">
+				<a href="/thread/<%= @item.smid %>/1"><%= @item.title %></a>
+			</td>
+			<td class="altCol">
+				<a href="http://www.sql.ru/forum/memberinfo.aspx?mid="></a>
+			</td>
+			<td style="text-align:center"><%= @item.responses %></td>
+			<td style="text-align:center" class="altCol"><%= @item.updated_at.strftime("%F %k:%M ") %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
