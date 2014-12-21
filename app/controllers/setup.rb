@@ -2,6 +2,7 @@ Rsnw::App.controllers :setup do
   
  
   get :forums do
+    @title = "setup::forums"
     render 'forums'
   end
 

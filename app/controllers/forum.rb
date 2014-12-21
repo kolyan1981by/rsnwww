@@ -2,6 +2,7 @@ Rsnw::App.controllers :forum do
 
 
   get :list do
+  	@title = "rsn::forums"
   	render 'list'
   end
  
