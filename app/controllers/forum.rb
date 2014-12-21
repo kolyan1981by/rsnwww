@@ -6,7 +6,10 @@ Rsnw::App.controllers :forum do
   end
  
   get :index, :with => :id do
+  	forum = Forums.first(:fid=>params[:id])
+  	@title = forum.name
     @topics = Topics.filter(:fid=>params[:id]).reverse_order(:updated_at).all
+
     render 'index'
   end
 
