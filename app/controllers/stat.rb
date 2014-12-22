@@ -20,15 +20,15 @@ Rsnw::App.controllers :stat do
   # end
 
   get :recent_posts do
-    from = DateTime.now - (300/1440.0)
+    from = DateTime.now.new_offset(0) - (180/1440.0)
 
-
+    @topics = Topics.filter('updated_at > ?',from).to_hash(:smid)
     @posts = Posts.filter('addedat > ? ', from).order(:addedat).all
 
     @page =1
     @responses = @posts.size
     @url = "/stat/recent_posts"
-    render 'thread/index'
+    render 'posts_grouped_by_thread'
 
   end
 

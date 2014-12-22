@@ -1,28 +1,30 @@
 <?xml version="1.0" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
-    <head>
-        <title><%=@title%></title>
-        
-        <script src="/javascripts/analytics.js" async=""></script>
-        <script src="/javascripts/site.js"></script>
-        
-        <link href="/stylesheets/site.css" rel="stylesheet">
-        
-        <script src="/javascripts/messages.js"></script>
-        
-        <link href="/stylesheets/messages.css" rel="stylesheet">
-        
-        <script type="text/javascript" src="/javascripts/addthis_widget.js#async=1"></script>
-    </head>
-    <body>
-       
-       <a href="/setup/forums">setup forums</a>
-       </br>
-        <a href="/stat/recent_posts">recent</a>
-       </br>
-       <a href="/forum/list">all forums</a>
-       </br>
-        <%= yield %>
-    </body>
+  <head>
+    <title><%=@title%></title>
+    
+    <script src="/javascripts/analytics.js" async=""></script>
+    <script src="/javascripts/site.js"></script>
+    
+    <link href="/stylesheets/site.css" rel="stylesheet">
+    
+    <script src="/javascripts/messages.js"></script>
+    
+    <link href="/stylesheets/messages.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="/javascripts/addthis_widget.js#async=1"></script>
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+  </head>
+  <body>
+    <div style="margin-left: 20px;margin-top: 15px;">
+      <a href="/setup/forums">setup forums</a>
+      </br>
+      <a href="/stat/recent_posts">recent</a>
+      </br>
+      <a href="/forum/list">all forums</a>
+      </br>
+      <%= yield %>
+    </div>
+  </body>
 </html>

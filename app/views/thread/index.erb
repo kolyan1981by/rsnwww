@@ -2,38 +2,38 @@
 
 <%= partial 'shared/page_nav', :object => {:count=>@responses+1, :url=>@url, :page => @page} %>
 
-<% for @item in @posts %>
+	<% @posts.each_with_index do |item, ind| %>
 
-<div class="msg-hdr" data-get-automod-url="/rs/message/<%= @item.mid %>/automod" data-msg-id="<%= @item.mid %>">
-	<div class="subj">
-		<span class="subj-text">
-		<%= @item.title %>
-		</span>
+	<div class="msg-hdr" data-get-automod-url="/rs/message/<%= item.mid %>/automod" data-msg-id="<%= item.mid %>">
+		<div class="subj">
+			<span class="subj-text">
+			<%= "#{ind}| #{item.title}" %>
+			</span>
+		</div>
+		
 	</div>
-	
-</div>
 
-<table width="100%" border="0" cellspacing="0">
-	<tbody>
-		<tr>
-			
-			<td class="ii hdr-label">От:</td>
-			<td class="i nick-cell">
-				<a class="hdr profile-tip" title="dimacpp" target="_blank" href="/account/info/116678" rel="/account/shortinfo/116678">
-					<%= @item.addedby %>
-				</a>
+	<table width="100%" border="0" cellspacing="0">
+		<tbody>
+			<tr>
 				
-			</td>
-			<td class="i home-page" rowspan="2">&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="ii" nowrap=""><font size="2"><b>Дата:&nbsp;</b></font></td>
-			<td class="i" width="100%"><font size="2"><%= @item.addedat.strftime("%F %k:%M ") %></font></td>
-		</tr>
-	</tbody>
-</table>
+				<td class="ii hdr-label">От:</td>
+				<td class="i nick-cell">
+					<a class="hdr profile-tip" title="<%= item.addedby %>" target="_blank" href="http://rsdn.ru/Forum/MsgUList.aspx?uid=<%= item.addeduid %>&start=1" rel="/account/shortinfo/<%= item.addeduid %>">
+						<%= item.addedby %>
+					</a>
+					
+				</td>
+				<td class="i home-page" rowspan="2">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="ii" nowrap=""><font size="2"><b>Дата:&nbsp;</b></font></td>
+				<td class="i" width="100%"><font size="2"><%= item.addedat.strftime("%F %k:%M ") %></font></td>
+			</tr>
+		</tbody>
+	</table>
 
 
 
-<%= @item.text.gsub('http://www.rsdn.ru/forum','').html_safe %>
-<% end %>
+	<%= item.text.gsub('http://www.rsdn.ru/forum','').html_safe %>
+	<% end %>
