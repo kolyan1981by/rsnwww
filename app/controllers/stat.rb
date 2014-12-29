@@ -20,6 +20,8 @@ Rsnw::App.controllers :stat do
   # end
 
   get :recent_posts do
+
+    @title = "rsn:recent"
     from = DateTime.now.new_offset(0) - (180/1440.0)
 
     @topics = Topics.filter('updated_at > ?',from).to_hash(:smid)

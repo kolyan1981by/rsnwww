@@ -1,8 +1,5 @@
-<ul>
-	<% for @item in Forums %>
-	<li><a href="/forum/<%= @item.fid %>"><%= @item.name %></a></li>
-	<% end %>
-</ul>
+<%= partial 'shared/forums' %>
+
 <div>
 	<%= @title %>
 </div>

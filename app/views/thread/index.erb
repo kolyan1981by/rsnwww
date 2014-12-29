@@ -1,4 +1,4 @@
-
+<%= partial 'shared/forums' %>
 
 <%= partial 'shared/page_nav', :object => {:count=>@responses+1, :url=>@url, :page => @page} %>
 
@@ -37,3 +37,5 @@
 
 	<%= item.text.gsub('http://www.rsdn.ru/forum','').html_safe %>
 	<% end %>
+
+<%= partial 'shared/page_nav', :object => {:count=>@responses+1, :url=>@url, :page => @page} %>

@@ -1,0 +1,13 @@
+<table style="width:90%;">
+	<tr>
+		<% Forums.all.group_by{|h| h[:forum_group]}.each do |gr, forums| %>
+		<td>
+			<ul>
+				<% for item in forums %>
+				<li><a href="/forum/<%= item.fid %>"><%= item.name %></a></li>
+				<% end %>
+			</ul>
+		</td>
+		<% end %>
+	</tr>
+</table>
