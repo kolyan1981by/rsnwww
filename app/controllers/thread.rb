@@ -1,7 +1,7 @@
 Rsnw::App.controllers :thread do
 
   get :index, :with => [:id, :page] do
-    #LogHelper.log_req(request)
+    LogHelper.log_req(request)
 
 
     tp = Topics.first(:smid => params[:id])
