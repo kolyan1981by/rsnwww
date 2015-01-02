@@ -1,10 +1,15 @@
+
 <table style="width:90%;">
 	<tr>
 		<% Forums.all.group_by{|h| h[:forum_group]}.each do |gr, forums| %>
-		<td>
+		<td valign="top">
 			<ul>
 				<% for item in forums %>
-				<li><a href="/forum/<%= item.fid %>"><%= item.name %></a></li>
+					<% if item.check==1 %>
+						<li><a href="/forum/<%= item.fid %>"><%= item.name %> <%= item.bot_updated_at.strftime("%H:%M %d") if not item.bot_updated_at.nil? %></a></li>
+					<% else %>
+						<li><a href="/forum/<%= item.fid %>" style="color:red"><%= item.name %> <%= item.bot_updated_at.strftime("%H:%M %d") if not item.bot_updated_at.nil? %></a></li>
+					<% end %>
 				<% end %>
 			</ul>
 		</td>

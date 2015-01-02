@@ -1,11 +1,16 @@
 Rsnw::App.controllers :forum do
 
 
-  get :list do
-  	@title = "rsn::forums"
-  	render 'list'
+  get :index do
+  	@title = "rsn::forums:list"
+    @forums = Forums.filter(:priority=>1).reverse_order(:bot_updated_at).all
+    render 'list'
   end
- 
+  get :list do
+    @title = "rsn::forums:list"
+    @forums = Forums.filter(:priority=>1).reverse_order(:bot_updated_at).all
+    render 'list'
+  end
   get :index, :with => :id do
   	forum = Forums.first(:fid=>params[:id])
   	@title = forum.name
