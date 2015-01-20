@@ -1,37 +1,39 @@
 Rsnw::App.controllers :stat do
 
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
+    # get :index, :map => '/foo/bar' do
+    #   session[:foo] = 'bar'
+    #   render 'index'
+    # end
 
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
+    # get :sample, :map => '/sample/url', :provides => [:any, :js] do
+    #   case content_type
+    #     when :js then ...
+    #     else ...
+    # end
 
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
+    # get :foo, :with => :id do
+    #   'Maps to url '/foo/#{params[:id]}''
+    # end
 
-  # get '/example' do
-  #   'Hello world!'
-  # end
+    # get '/example' do
+    #   'Hello world!'
+    # end
 
-  get :recent_posts do
+    get :recent_posts do
 
-    @title = "rsn:recent"
-    from = DateTime.now.new_offset(0) - (180/1440.0)
+      @title = "rsn:recent"
+      from = DateTime.now.new_offset(0) - (24/24.0)
 
-    @topics = Topics.filter('updated_at > ?',from).to_hash(:smid)
-    @posts = Posts.filter('addedat > ? ', from).order(:addedat).all
+      @forums = Forums.to_hash(:fid,:name)
+      @topics = Topics.filter('updated_at > ?',from).to_hash(:smid)
 
-    @page =1
-    @responses = @posts.size
-    @url = "/stat/recent_posts"
-    render 'posts_grouped_by_thread'
+      @posts = Posts.join(:topics, :smid=>:smid).exclude(fid:[33,34,84]).filter('addedat > ? ', from).order(:addedat).all
 
-  end
+      @page =1
+      @responses = @posts.size
+      @url = "/stat/recent_posts"
+      render 'posts_grouped_by_thread'
+
+    end
 
 end
