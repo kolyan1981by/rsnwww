@@ -61,5 +61,8 @@ module Rsnw
     #     render 'errors/500'
     #   end
     #
+    get :index, :map => '/' do
+      redirect '/forum/list'
+    end
   end
 end
